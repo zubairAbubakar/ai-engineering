@@ -1,9 +1,7 @@
 import OpenAI from 'openai';
 
 export async function getOpenaiResponse(question: string) {
-  const openai = new OpenAI({
-    dangerouslyAllowBrowser: true,
-  });
+  const openai = new OpenAI();
 
   const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
     {
