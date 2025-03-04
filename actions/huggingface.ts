@@ -75,6 +75,7 @@ export const getfreeModels = async () => {
   }
 
   models.sort((model1, model2) => model2.likes - model1.likes);
+
   for (const model of models) {
     console.log(`${model.likes} Likes: https://huggingface.co/${model.name}`);
   }
