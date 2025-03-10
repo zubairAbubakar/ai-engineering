@@ -73,7 +73,7 @@ export const findNearestMatch = async (embedding: FeatureExtractionOutput) => {
   return data;
 };
 
-const createEmbedding = async (text: string) => {
+export const createEmbedding = async (text: string) => {
   const embeddingResponse: FeatureExtractionOutput = await hf.featureExtraction(
     {
       inputs: text,
@@ -102,4 +102,18 @@ const getChatCompletion = async (text: string, query: string) => {
   });
   console.log('Chat Response: ', response);
   return response.choices[0].message.content;
+};
+
+export const storeEmbeddings = async (
+  data: {
+    content: string;
+    embedding: FeatureExtractionOutput;
+  }[]
+) => {
+  try {
+    const { error } = await supabase.from('movies').insert(data);
+    if (error) throw error;
+  } catch (error) {
+    console.error('Error inserting embeddings:', error);
+  }
 };
