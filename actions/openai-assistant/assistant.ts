@@ -1,14 +1,13 @@
 'use server';
 
-// import { openai } from '../openaiConfig';
 import OpenAI from 'openai';
 import * as fs from 'fs';
 import path from 'path';
 import { FileCitationAnnotation } from 'openai/resources/beta/threads/messages.mjs';
 
-// /** OpenAI config */
-// if (!process.env.OPENAI_API_KEY)
-//   throw new Error('OpenAI API key is missing or invalid.');
+/** OpenAI config */
+if (!process.env.OPENAI_API_KEY)
+  throw new Error('OpenAI API key is missing or invalid.');
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
